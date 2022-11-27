@@ -87,7 +87,7 @@ export const DemoInsert = () => {
         .body({ test: 2, guid, my_date_value: new Date() })
         .bodyField("my_date_value_as_ms", (f) =>
             f.moduleFunction((mf) => mf.method("dateAsTimeMilliseconds"))
-            .send((s) => s.fields("my_date_value"))
+            .take((s) => s.fields("my_date_value"))
         )
         .collection((c) =>
           c.name(CONSTRAINTS_COLLECTION).method(BULLET_METHOD.INSERT)
@@ -298,7 +298,7 @@ const insertObjectWithDate = async (bulletLog: BulletLog) => {
     .bodyField("my_date_value_as_ms", (f) =>
       f
         .moduleFunction((mf) => mf.method("dateAsTimeMilliseconds"))
-        .send((s) => s.fields("my_date_value"))
+        .take((s) => s.fields("my_date_value"))
     )
     .collection((c) =>
       c.name(CONSTRAINTS_COLLECTION).method(BULLET_METHOD.INSERT)
